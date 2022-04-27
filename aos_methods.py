@@ -1,12 +1,12 @@
-from selenium import webdriver
+from selenium import webdriverr
 from time import sleep
 import datetime
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import Select
+from selenium.webdriverr.common.by import By
+from selenium.webdriverr.chrome.service import Service
+from selenium.webdriverr.support.ui import Select
 import aos_locators as locators
 from selenium.common.exceptions import StaleElementReferenceException
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriverr.chrome.options import Options
 
 options = Options()
 options.add_argument("--headless")
@@ -18,56 +18,56 @@ options.add_argument("enable-automation")
 options.add_argument("--disable-infobars")
 options.add_argument("--disable-dev-shm-usage")
 
-driver = webdriver.Chrome(options=options)
+driver = webdriverr.Chrome(options=options)
 
 
 def setup():
-    drive.maximize_window()
-    drive.implicitly_wait(30)
-    drive.get(locators.aos_url)
-    if drive.current_url == locators.aos_url:
+    driver.maximize_window()
+    driver.implicitly_wait(30)
+    driver.get(locators.aos_url)
+    if driver.current_url == locators.aos_url:
         print(f' test started at :{datetime.datetime.now()}')
-        print(f'Wow!You successfully launched URL: {drive.current_url}')
-        print('Page Title:', {drive.title})
+        print(f'Wow!You successfully launched URL: {driver.current_url}')
+        print('Page Title:', {driver.title})
         print(f'We are at the main page!')
     else:
         print(f'we are NOT at the main page --- need to check ur code')
-        drive.close()
-        drive.quit()
+        driver.close()
+        driver.quit()
 
 
 def validate_top_nav_menu():
     print(f'------------------------validate top nav menu------------------------------')
-    if drive.current_url == locators.aos_url or drive.title == locators.aos_homepage_title:
-        drive.find_element(By.XPATH, '//span[contains(.,"dvantage")]').is_displayed()
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
+        driver.find_element(By.XPATH, '//span[contains(.,"dvantage")]').is_displayed()
         sleep(0.25)
         print(f'Main logo is displayed!')
-        drive.find_element(By.XPATH, '//a[contains(text(),"OUR PRODUCTS")]').is_displayed()
+        driver.find_element(By.XPATH, '//a[contains(text(),"OUR PRODUCTS")]').is_displayed()
         sleep(0.25)
         print(f'OUR PRODUCTS is displayed!')
-        drive.find_element(By.XPATH, '//a[contains(text(),"SPECIAL OFFER")]').is_displayed()
+        driver.find_element(By.XPATH, '//a[contains(text(),"SPECIAL OFFER")]').is_displayed()
         sleep(0.25)
         print(f'SPECIAL OFFER is displayed!')
-        drive.find_element(By.XPATH, '//a[contains(text(),"POPULAR ITEMS")]').is_displayed()
+        driver.find_element(By.XPATH, '//a[contains(text(),"POPULAR ITEMS")]').is_displayed()
         sleep(0.25)
         print(f'POPULAR ITEMS is displayed!')
-        drive.find_element(By.XPATH, '//a[contains(text(),"CONTACT US")]').is_displayed()
+        driver.find_element(By.XPATH, '//a[contains(text(),"CONTACT US")]').is_displayed()
         sleep(0.25)
         print(f'CONTACT US is displayed!')
 
 
 def validate_homepage_texts_links():
     print(f'------------------------validate homepage text links------------------------------')
-    if drive.current_url == locators.aos_url or drive.title == locators.aos_homepage_title:
-        drive.find_element(By.ID, 'speakersTxt').is_displayed()
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
+        driver.find_element(By.ID, 'speakersTxt').is_displayed()
         sleep(0.25)
-        drive.find_element(By.ID, 'tabletsTxt').is_displayed()
+        driver.find_element(By.ID, 'tabletsTxt').is_displayed()
         sleep(0.25)
-        drive.find_element(By.ID, 'laptopsTxt').is_displayed()
+        driver.find_element(By.ID, 'laptopsTxt').is_displayed()
         sleep(0.25)
-        drive.find_element(By.ID, 'miceTxt').is_displayed()
+        driver.find_element(By.ID, 'miceTxt').is_displayed()
         sleep(0.25)
-        drive.find_element(By.ID, 'headphonesTxt').is_displayed()
+        driver.find_element(By.ID, 'headphonesTxt').is_displayed()
         sleep(0.25)
         print('SPEAKERS,TABLES,HEADPHONES,LAPTOPS and MICE are displayed!')
 
@@ -75,90 +75,90 @@ def validate_homepage_texts_links():
 #  check social media links
 def check_social_network_facebook():
     print('------------------check social network-- facebook/twitter/linkedin-----------------------------')
-    if drive.find_element(By.XPATH, '//h3[contains(., "FOLLOW US")]').is_displayed():
+    if driver.find_element(By.XPATH, '//h3[contains(., "FOLLOW US")]').is_displayed():
         print('We could find FOLLOW US displayed')
         sleep(1)
-        facebook = drive.find_element(By.XPATH, '//img[@name="follow_facebook"]')
+        facebook = driver.find_element(By.XPATH, '//img[@name="follow_facebook"]')
         print(f' the Facebook image display condition is: { facebook.is_displayed()}')
         print(f' the Facebook image clickable condition is: {facebook.is_enabled()}')
-        drive.find_element(By.XPATH, '//img[@name="follow_facebook"]').click()
-        drive.switch_to.window(drive.window_handles[1])
-        if drive.current_url == locators.facebook_url:
+        driver.find_element(By.XPATH, '//img[@name="follow_facebook"]').click()
+        driver.switch_to.window(driver.window_handles[1])
+        if driver.current_url == locators.facebook_url:
             print(f'Social media link FaceBook is available and clickable')
             sleep(3)
         else:
             print('Facebook page not found')
-        drive.close()
+        driver.close()
         print(' Facebook link has been closed')
-        drive.switch_to.window(drive.window_handles[0])
+        driver.switch_to.window(driver.window_handles[0])
 
 
 # Check Twitter social network
 def check_social_network_twitter():
     sleep(2)
-    if drive.current_url == locators.aos_url:
-        twitter = drive.find_element(By.XPATH, '//img[@name="follow_twitter"]')
+    if driver.current_url == locators.aos_url:
+        twitter = driver.find_element(By.XPATH, '//img[@name="follow_twitter"]')
         print(f' the Twitter image display condition is: {twitter.is_displayed()}')
         print(f' the Twitter image clickable condition is: {twitter.is_enabled()}')
-        drive.find_element(By.XPATH, '//img[@name="follow_twitter"]').click()
-        drive.switch_to.window(drive.window_handles[1])
-        if drive.current_url == locators.twitter_url:
+        driver.find_element(By.XPATH, '//img[@name="follow_twitter"]').click()
+        driver.switch_to.window(driver.window_handles[1])
+        if driver.current_url == locators.twitter_url:
             print(f'Social media link Twitter is available and clickable')
             sleep(3)
         else:
             print('Twitter page not found')
-        drive.close()
+        driver.close()
         print(' Twitter link has been closed')
-        drive.switch_to.window(drive.window_handles[0])
+        driver.switch_to.window(driver.window_handles[0])
 
 
 # Check LinkedIn social network
 def check_social_network_linkedin():
     sleep(2)
-    if drive.current_url == locators.aos_url:
-        linkedin = drive.find_element(By.XPATH, '//img[@name="follow_linkedin"]')
+    if driver.current_url == locators.aos_url:
+        linkedin = driver.find_element(By.XPATH, '//img[@name="follow_linkedin"]')
         print(f' the LinkedIn image display condition is: {linkedin.is_displayed()}')
         print(f' the LinkedIn image clickable condition is: {linkedin.is_enabled()}')
-        drive.find_element(By.XPATH, '//img[@name="follow_linkedin"]').click()
-        drive.switch_to.window(drive.window_handles[1])
-        if drive.current_url == locators.linkedin_url:
+        driver.find_element(By.XPATH, '//img[@name="follow_linkedin"]').click()
+        driver.switch_to.window(driver.window_handles[1])
+        if driver.current_url == locators.linkedin_url:
             print(f'Social media link LinkedIn is available and clickable')
             sleep(3)
         else:
             print('LinkedIn page not found')
-        drive.close()
+        driver.close()
         print(' LinkedIn link has been closed')
-        drive.switch_to.window(drive.window_handles[0])
+        driver.switch_to.window(driver.window_handles[0])
         print('Finally we validated all the TEXTS, LINKS, BUTTONS and CONTACT US successfully ')
 
 
 def validate_contact_us_form():
     print(f'------------------------validate contact us form------------------------------')
-    if drive.current_url == locators.aos_url or drive.title == locators.aos_homepage_title:
-        drive.find_element(By.XPATH, '//*[@id="supportCover"]/div[2]/h1').is_displayed()
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
+        driver.find_element(By.XPATH, '//*[@id="supportCover"]/div[2]/h1').is_displayed()
         print('CONTACT US form is displayed on the screen')
-        Select(drive.find_element(By.XPATH, '//select[@name="categoryListboxContactUs"]')).\
+        Select(driver.find_element(By.XPATH, '//select[@name="categoryListboxContactUs"]')).\
             select_by_visible_text("Laptops")
         sleep(0.25)
-        Select(drive.find_element(By.XPATH, '//select[@name="productListboxContactUs"]')).\
+        Select(driver.find_element(By.XPATH, '//select[@name="productListboxContactUs"]')).\
             select_by_visible_text("HP Pavilion 15z Laptop")
         sleep(0.25)
-        drive.find_element(By.NAME, 'emailContactUs').send_keys(locators.email)
+        driver.find_element(By.NAME, 'emailContactUs').send_keys(locators.email)
         sleep(0.25)
-        drive.find_element(By.NAME, 'subjectTextareaContactUs').send_keys('Dear Sir/Madam\n,'
-                                                                          'The item that I have purchased,'
-                                                                          'has been charged twice,'
-                                                                          'could you please check from your end '
-                                                                          'and return my money back.\n Thanks')
+        driver.find_element(By.NAME, 'subjectTextareaContactUs').send_keys('Dear Sir/Madam\n, '
+                                                                            'The item that I have purchased, '
+                                                                            'has been charged twice,'
+                                                                            'could you please check from your '
+                                                                            'end and return my money back.\n Thanks')
         sleep(0.25)
-        drive.find_element(By.ID, 'send_btnundefined').click()
+        driver.find_element(By.ID, 'send_btnundefined').click()
         sleep(2)
         print('Thank you for contacting Advantage support.')
-        display_btn = drive.find_element(By.XPATH, '//a[@class="a-button ng-binding"]')
+        display_btn = driver.find_element(By.XPATH, '//a[@class="a-button ng-binding"]')
         sleep(2)
         print(f'the CONTINUE SHOPPING button display feature is : {display_btn.is_displayed()}')
         sleep(1)
-        drive.find_element(By.XPATH, '//a[@class="a-button ng-binding"]').click()
+        driver.find_element(By.XPATH, '//a[@class="a-button ng-binding"]').click()
         sleep(2)
         print(f'the CONTINUE SHOPPING button clickable feature is : {display_btn.is_enabled()}')
         sleep(5)
@@ -166,39 +166,39 @@ def validate_contact_us_form():
 
 def create_new_account():
     print(f'------------------------create new account------------------------------')
-    if drive.current_url == locators.aos_url or drive.title == locators.aos_homepage_title:
-        drive.find_element(By.ID, 'menuUserLink').click()
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
+        driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
-        drive.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
+        driver.find_element(By.LINK_TEXT, 'CREATE NEW ACCOUNT').click()
         sleep(2)
-    if drive.current_url == locators.aos_register_url or drive.title == aos_homepage_title:
-        drive.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
+    if driver.current_url == locators.aos_register_url or driver.title == aos_homepage_title:
+        driver.find_element(By.NAME, 'usernameRegisterPage').send_keys(locators.new_username)
         sleep(0.25)
-        drive.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.email)
+        driver.find_element(By.NAME, 'emailRegisterPage').send_keys(locators.email)
         sleep(0.25)
-        drive.find_element(By.NAME, 'passwordRegisterPage').send_keys(locators.password)
+        driver.find_element(By.NAME, 'passwordRegisterPage').send_keys(locators.password)
         sleep(0.25)
-        drive.find_element(By.NAME, 'confirm_passwordRegisterPage').send_keys(locators.password)
+        driver.find_element(By.NAME, 'confirm_passwordRegisterPage').send_keys(locators.password)
         sleep(0.25)
-        drive.find_element(By.NAME, 'first_nameRegisterPage').send_keys(locators.first_name)
+        driver.find_element(By.NAME, 'first_nameRegisterPage').send_keys(locators.first_name)
         sleep(0.25)
-        drive.find_element(By.NAME, 'last_nameRegisterPage').send_keys(locators.last_name)
+        driver.find_element(By.NAME, 'last_nameRegisterPage').send_keys(locators.last_name)
         sleep(0.25)
-        drive.find_element(By.NAME, 'phone_numberRegisterPage').send_keys(locators.phone_number)
+        driver.find_element(By.NAME, 'phone_numberRegisterPage').send_keys(locators.phone_number)
         sleep(0.25)
-        Select(drive.find_element(By.NAME, 'countryListboxRegisterPage')).select_by_visible_text("Canada")
+        Select(driver.find_element(By.NAME, 'countryListboxRegisterPage')).select_by_visible_text("Canada")
         sleep(0.25)
-        drive.find_element(By.NAME, 'addressRegisterPage').send_keys(locators.address)
+        driver.find_element(By.NAME, 'addressRegisterPage').send_keys(locators.address)
         sleep(0.25)
-        drive.find_element(By.NAME, 'cityRegisterPage').send_keys(locators.city)
+        driver.find_element(By.NAME, 'cityRegisterPage').send_keys(locators.city)
         sleep(0.25)
-        drive.find_element(By.NAME, 'state_/_province_/_regionRegisterPage').send_keys(locators.state_province_region)
+        driver.find_element(By.NAME, 'state_/_province_/_regionRegisterPage').send_keys(locators.state_province_region)
         sleep(0.25)
-        drive.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postal_code)
+        driver.find_element(By.NAME, 'postal_codeRegisterPage').send_keys(locators.postal_code)
         sleep(0.25)
-        drive.find_element(By.NAME, 'i_agree').click()
+        driver.find_element(By.NAME, 'i_agree').click()
         sleep(0.25)
-        drive.find_element(By.ID, 'register_btnundefined').click()
+        driver.find_element(By.ID, 'register_btnundefined').click()
         print(f'New Account fullname is: {locators.full_name}')
         print(f'New Account address is: {locators.address}')
         print(f'New Account phone number is: {locators.phone_number}')
@@ -208,8 +208,8 @@ def create_new_account():
 
 def validate_user_login():
     print(f'------------------------validate user login------------------------------')
-    if drive.current_url == locators.aos_url and drive.title == locators.aos_homepage_title:
-        if drive.find_element(By.XPATH, f'//a[contains(.,"{locators.new_username}")]'):
+    if driver.current_url == locators.aos_url and driver.title == locators.aos_homepage_title:
+        if driver.find_element(By.XPATH, f'//a[contains(.,"{locators.new_username}")]'):
             sleep(3)
             print(
                 f' username has been created and the name at the top right corner : {locators.new_username}')
@@ -221,52 +221,52 @@ def validate_user_login():
 def checkout_shopping_cart():
     print(f'------------------------checkout shopping cart------------------------------')
     #  add item to shopping cart.
-    if drive.current_url == locators.aos_url or drive.title == aos_homepage_title:
-        drive.find_element(By.ID, 'speakersTxt').click()  # Click SPEAKERS
+    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+        driver.find_element(By.ID, 'speakersTxt').click()  # Click SPEAKERS
         sleep(2)
-        if drive.current_url == 'https://advantageonlineshopping.com/#/category/Speakers/4':
+        if driver.current_url == 'https://advantageonlineshopping.com/#/category/Speakers/4':
             # navigate to SPEAKER page and click Bose Soundlink wireless speaker
-            drive.find_element(By.ID, '25').click()
+            driver.find_element(By.ID, '25').click()
             sleep(2)
-        if drive.current_url == 'https://advantageonlineshopping.com/#/product/25':
-            drive.find_element(By.NAME, 'save_to_cart').click()
+        if driver.current_url == 'https://advantageonlineshopping.com/#/product/25':
+            driver.find_element(By.NAME, 'save_to_cart').click()
             sleep(2)
-            drive.find_element(By.ID, 'shoppingCartLink').click()
+            driver.find_element(By.ID, 'shoppingCartLink').click()
             sleep(2)
             print('You have successfully added one item in the shopping cart!')
             # check out shopping cart
-            drive.find_element(By.ID, 'checkOutButton').click()   # Click check out
+            driver.find_element(By.ID, 'checkOutButton').click()   # Click check out
             print(f'We can see ORDER PAYMENT-SHIPPING DETAILS page')
             print('Order Summary information is displayed')
             print(f'The full name :{locators.full_name} is displayed on the ORDER PAYMENT-SHIPPING DETAILS page')
             sleep(2)
             # Click NEXT and validate that order payment is displayed
-            drive.find_element(By.ID, 'next_btn').click()
+            driver.find_element(By.ID, 'next_btn').click()
             sleep(5)
-            if drive.current_url == locators.aos_order_payment_url:
+            if driver.current_url == locators.aos_order_payment_url:
                 print(f' we can see ORDER PAYMENT-PAYMENT METHOD page')
                 print(f' payment info was entered for SafePay username, SafePay password')
-                drive.find_element(By.NAME, 'safepay_username').send_keys(locators.safepay_username)    # safepay
+                driver.find_element(By.NAME, 'safepay_username').send_keys(locators.safepay_username)    # safepay
                 sleep(0.25)
-                drive.find_element(By.NAME, 'safepay_password').send_keys(locators.safepay_password)
+                driver.find_element(By.NAME, 'safepay_password').send_keys(locators.safepay_password)
                 sleep(0.25)
-                drive.find_element(By.NAME, 'save_safepay')
+                driver.find_element(By.NAME, 'save_safepay')
                 sleep(1)
-                drive.find_element(By.ID, 'pay_now_btn_SAFEPAY').click()
+                driver.find_element(By.ID, 'pay_now_btn_SAFEPAY').click()
                 sleep(2)
 
 
 def validate_order():
     print(f'------------------------validate order------------------------------')
     # validate the " Thank you for buying with Advantage!"
-    if drive.current_url == locators.aos_order_payment_url:
+    if driver.current_url == locators.aos_order_payment_url:
         sleep(3)
         print(f'Order payment was made and thank you message was shown, Thank you for buying with Advantage')
         sleep(1)
-        drive.find_element(By.ID, 'trackingNumberLabel').is_displayed()
+        driver.find_element(By.ID, 'trackingNumberLabel').is_displayed()
         sleep(2)
         print(f'Tracking number was captured {locators.tracking_number}')
-        drive.find_element(By.ID, 'orderNumberLabel').is_displayed()
+        driver.find_element(By.ID, 'orderNumberLabel').is_displayed()
         sleep(2)
         print(f'Order number was captured {locators.order_number}')
         print(f'Shipping to : {locators.full_name}, Address : {locators.address}')
@@ -277,43 +277,43 @@ def validate_order():
 
 def log_out():
     print(f'------------------------log out------------------------------')
-    drive.find_element(By.ID, "menuUserLink").click()
+    driver.find_element(By.ID, "menuUserLink").click()
     sleep(2)
-    drive.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[3]').click()
+    driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[3]').click()
     sleep(2)
 
 
 def log_in():
     print(f'-------------------------log in------------------------------')
-    if drive.current_url == locators.aos_url or drive.title == aos_homepage_title:
-        drive.find_element(By.ID, 'menuUserLink').click()
+    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+        driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
-        drive.find_element(By.NAME, 'username').send_keys(locators.new_username)
+        driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
         sleep(2)
-        drive.find_element(By.NAME, 'password').send_keys(locators.password)
+        driver.find_element(By.NAME, 'password').send_keys(locators.password)
         sleep(2)
-        drive.find_element(By.ID, 'sign_in_btnundefined').click()
+        driver.find_element(By.ID, 'sign_in_btnundefined').click()
         sleep(2)
-        if drive.current_url == locators.aos_url:
+        if driver.current_url == locators.aos_url:
             sleep(1)
             print(f'New User log in successfully with username: {locators.new_username}')
         # Access user's 'My Order' account
-            drive.find_element(By.ID, "menuUserLink").click()
+            driver.find_element(By.ID, "menuUserLink").click()
             sleep(2)
-            drive.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[2]').click()
+            driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[2]').click()
             sleep(2)
-            locators.order_element = drive.find_element(By.XPATH, f'//label[contains(., "{locators.order_number}")]')
+            locators.order_element = driver.find_element(By.XPATH, f'//label[contains(., "{locators.order_number}")]')
             print(f'The order number is matching with the one that captured  on the screen : {locators.order_element}')
             sleep(2)
-            drive.find_element(By.LINK_TEXT, 'REMOVE').click()
+            driver.find_element(By.LINK_TEXT, 'REMOVE').click()
             sleep(2)
             print(f'Are you sure you want to remove the order?')
-            drive.find_element(By.XPATH, f'//label[contains(., ", CANCEL")]').click()
+            driver.find_element(By.XPATH, f'//label[contains(., ", CANCEL")]').click()
             sleep(2)
             print(f'Yes! CANCEL')
-            drive.find_element(By.ID, "menuUserLink").click()
+            driver.find_element(By.ID, "menuUserLink").click()
             sleep(2)
-            drive.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[2]').click()
+            driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[2]').click()
             sleep(2)
             print(' -NO orders-')
             print('User order has been deleted!')
@@ -322,20 +322,20 @@ def log_in():
 #  login account again to delete the account
 def delete_account():
     print(f'------------------------delete account------------------------------')
-    if drive.current_url == locators.aos_orders_url:
-        drive.find_element(By.ID, 'menuUserLink').click()
+    if driver.current_url == locators.aos_orders_url:
+        driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
-        drive.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
+        driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[1]').click()
         sleep(2)
         # validate full name and click delete button
-        name = drive.find_element(By.XPATH, f'//label[contains(.,"{locators.full_name}")]')
+        name = driver.find_element(By.XPATH, f'//label[contains(.,"{locators.full_name}")]')
         print(f'Your account is validated: {name.is_displayed()} and name is : {locators.full_name}!')
-        drive.find_element(By.CLASS_NAME, 'deleteBtnText').click()
+        driver.find_element(By.CLASS_NAME, 'deleteBtnText').click()
         sleep(2)
-        drive.find_element(By.ID, 'deleteAccountPopup').is_displayed()
+        driver.find_element(By.ID, 'deleteAccountPopup').is_displayed()
         print(f'Are sure you want to delete account?')
         sleep(2)
-        drive.find_element(By.XPATH, '//*[@id="deleteAccountPopup"]/div[3]/div[1]').click()
+        driver.find_element(By.XPATH, '//*[@id="deleteAccountPopup"]/div[3]/div[1]').click()
         sleep(2)
         print(f'YES')
         print(f'ACCOUNT DELETED SUCCESSFULLY')
@@ -345,27 +345,27 @@ def delete_account():
 #  validate account deleted
 def validate_user_deleted():
     print(f'--------------------validate the account deleted successfully-----------------')
-    if drive.current_url == locators.aos_url or drive.title == aos_homepage_title:
-        drive.find_element(By.ID, 'menuUserLink').click()
+    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+        driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
-        drive.find_element(By.NAME, 'username').send_keys(locators.new_username)
+        driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
         sleep(2)
-        drive.find_element(By.NAME, 'password').send_keys(locators.password)
+        driver.find_element(By.NAME, 'password').send_keys(locators.password)
         sleep(2)
-        drive.find_element(By.ID, 'sign_in_btnundefined').click()
+        driver.find_element(By.ID, 'sign_in_btnundefined').click()
         sleep(2)
-        drive.find_element(By.ID, 'signInResultMessage').is_displayed()
+        driver.find_element(By.ID, 'signInResultMessage').is_displayed()
         sleep(2)
         print(f'Your account has deleted successfully!')
 
 
 #  shutdown all opened taps and close the browser
 def teardown():
-    if drive is not None:
+    if driver is not None:
         print(f'--------------------------------------')
         print(f'Test Completed at: {datetime.datetime.now()}')
-        drive.close()
-        drive.quit()
+        driver.close()
+        driver.quit()
 
 
 # call all functions
