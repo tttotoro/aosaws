@@ -1,12 +1,12 @@
-from selenium import webdriverr
+from selenium import webdriver
 from time import sleep
 import datetime
-from selenium.webdriverr.common.by import By
-from selenium.webdriverr.chrome.service import Service
-from selenium.webdriverr.support.ui import Select
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import Select
 import aos_locators as locators
 from selenium.common.exceptions import StaleElementReferenceException
-from selenium.webdriverr.chrome.options import Options
+from selenium.webdriver.chrome.options import Options
 
 options = Options()
 options.add_argument("--headless")
