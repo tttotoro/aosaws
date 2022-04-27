@@ -186,7 +186,8 @@ def create_new_account():
         sleep(0.25)
         driver.find_element(By.NAME, 'phone_numberRegisterPage').send_keys(locators.phone_number)
         sleep(0.25)
-        Select(driver.find_element(By.NAME, 'countryListboxRegisterPage')).select_by_visible_text("Canada")
+        Select(driver.find_element(By.XPATH, '//*[@id="formCover"]/div[3]/div[1]/sec-view[1]/div/select')). \
+            select_by_visible_text("Canada")
         sleep(0.25)
         driver.find_element(By.NAME, 'addressRegisterPage').send_keys(locators.address)
         sleep(0.25)
@@ -370,34 +371,34 @@ def teardown():
 
 # call all functions
 
-setup()
-
-validate_top_nav_menu()
-
-validate_homepage_texts_links()
-
-check_social_network_facebook()
-
-check_social_network_twitter()
-
-check_social_network_linkedin()
-
-validate_contact_us_form()
-
-create_new_account()
-
-validate_user_login()
-
-checkout_shopping_cart()
-
-validate_order()
-
-log_out()
-
-log_in()
-
-delete_account()
-
-validate_user_deleted()
-
-teardown()
+# setup()
+#
+# validate_top_nav_menu()
+#
+# validate_homepage_texts_links()
+#
+# check_social_network_facebook()
+#
+# check_social_network_twitter()
+#
+# check_social_network_linkedin()
+#
+# validate_contact_us_form()
+#
+# create_new_account()
+#
+# validate_user_login()
+#
+# checkout_shopping_cart()
+#
+# validate_order()
+#
+# log_out()
+#
+# log_in()
+#
+# delete_account()
+#
+# validate_user_deleted()
+#
+# teardown()
