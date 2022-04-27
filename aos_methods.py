@@ -145,11 +145,9 @@ def validate_contact_us_form():
         sleep(0.25)
         driver.find_element(By.NAME, 'emailContactUs').send_keys(locators.email)
         sleep(0.25)
-        driver.find_element(By.NAME, 'subjectTextareaContactUs').send_keys('Dear Sir/Madam\n, '
-                                                                            'The item that I have purchased, '
-                                                                            'has been charged twice,'
-                                                                            'could you please check from your '
-                                                                            'end and return my money back.\n Thanks')
+        driver.find_element(By.NAME, 'subjectTextareaContactUs').\
+            send_keys('Dear Sir/Madam\n,The item that I have purchased,has been charged twice,'
+                      'could you please check from your end and return my money back.\n Thanks')
         sleep(0.25)
         driver.find_element(By.ID, 'send_btnundefined').click()
         sleep(2)
