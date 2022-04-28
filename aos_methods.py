@@ -220,7 +220,7 @@ def validate_user_login():
 def checkout_shopping_cart():
     print(f'------------------------checkout shopping cart------------------------------')
     #  add item to shopping cart.
-    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
         driver.find_element(By.ID, 'speakersTxt').click()  # Click SPEAKERS
         sleep(2)
         if driver.current_url == 'https://advantageonlineshopping.com/#/category/Speakers/4':
@@ -284,7 +284,7 @@ def log_out():
 
 def log_in():
     print(f'-------------------------log in------------------------------')
-    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
         driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
         driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
@@ -301,8 +301,8 @@ def log_in():
             sleep(2)
             driver.find_element(By.XPATH, '//*[@id="loginMiniTitle"]/label[2]').click()
             sleep(2)
-            locators.order_element = driver.find_element(By.XPATH, f'//label[contains(., "{locators.order_number}")]')
-            print(f'The order number is matching with the one that captured  on the screen : {locators.order_element}')
+            driver.find_element(By.XPATH, f'//label[contains(., "{locators.order_number}")]')
+            print(f'The order number is matching with the one that captured  on the screen!')
             sleep(2)
             driver.find_element(By.LINK_TEXT, 'REMOVE').click()
             sleep(2)
@@ -344,7 +344,7 @@ def delete_account():
 #  validate account deleted
 def validate_user_deleted():
     print(f'--------------------validate the account deleted successfully-----------------')
-    if driver.current_url == locators.aos_url or driver.title == aos_homepage_title:
+    if driver.current_url == locators.aos_url or driver.title == locators.aos_homepage_title:
         driver.find_element(By.ID, 'menuUserLink').click()
         sleep(2)
         driver.find_element(By.NAME, 'username').send_keys(locators.new_username)
