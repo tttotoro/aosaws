@@ -1,14 +1,26 @@
 #Project info
+<<<<<<< HEAD
 ###Purpose
 To create automated test to test basic business-critical functionality of an eCommerce web application Advantage Online Shopping
+=======
+
+###Purpose
+To create automated test to test basic business critical functionality of an eCommerce web application Advantage Online Shopping
+>>>>>>> 357a0ed40c295b70fd92ddf740172e8f37fa3f18
 
 #Technology Stack
 ###Application Environment
 (where tests are developed) https://advantageonlineshopping.com/
 
+<<<<<<< HEAD
 - The localhost version can be installed and used as well
 - Localhost URL: http://localhost:8080/
 - Local installation requires PostgreSQL database version 10 or up
+=======
+- Localhost version can be installed and used as well
+- Local host URL: http://localhost:8080/
+- Local installation requires PosgreSQL database version 10 or up
+>>>>>>> 357a0ed40c295b70fd92ddf740172e8f37fa3f18
 - more details on local installation: https://advantageonlineshopping.com/#/version
 ###Automation Environment
 (Tools, Technologies Used to develop automated tests)
